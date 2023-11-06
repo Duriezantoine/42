@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aduriez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 14:03:23 by aduriez           #+#    #+#             */
-/*   Updated: 2023/11/04 16:25:55 by aduriez          ###   ########.fr       */
+/*   Created: 2023/11/01 15:52:08 by aduriez           #+#    #+#             */
+/*   Updated: 2023/11/06 15:03:07 by aduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char *ft_strtrim(char const *s1, char const *set)
+int main ()
 {
-	int counts1;
-	int counts2;
-	int count_neg;
+	ft_strtrim("eeXXeXeeeee", "e");
 
-	count_neg = 0;	
-	counts2 = 0;
-	counts1 = ft_strlen(s1);
-	while(set[counts2])
-	{
-		if (ft_strchr(s1, set[counts2]) != 0)
-		{
-				
-		}
-		counts2++;
-
-	}
-	printf("%d", count_neg);
-	return(0);
-		
+	
 }

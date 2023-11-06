@@ -12,7 +12,38 @@
 #include "libft.h"
 
 char *ft_substr(char const *s, unsigned int start,size_t len);
+char *ft_safe(char *safe, char const *s, char c, unsigned int start, int fin)
+{
+	int count;
+	
+	count = 0;
+	while((int)start <= fin)
+	{
+		if(s[start] != c)
+		{
+			safe[count] = s[start];
+			count++;
+		}
+		start++;
+	}
+	if(c != '\0')
+		safe[count] = '\0';
+	return(safe);
 
+}
+
+int	count_diff(char const *s, char c , int start, int fin)
+{
+	int nbr;
+	nbr = 0;
+	while(start<fin)
+	{
+		if(s[start] != c)
+			nbr++;
+		start++;	
+	}
+	return(nbr);
+}
 int occurence_start(char const *s, char c, int start)
 {
 	int search;
@@ -53,55 +84,23 @@ char **ft_split(char const *s, char c)
 	int count;
 	int start;
 	int fin;
-	char *mots;
-//Condition pour chaine vide
+	int nbr_sur;
 
 	start = 0;
 	fin = 0;
 	count = 0;
 	nbr_mots = nbr_occurence(s, c);
-	safe = (char **)malloc(sizeof(char *) * nbr_mots);
-	while(count < nbr_mots)
+	safe = (char**)malloc(sizeof(char*) * nbr_mots);
+	while(count <= (nbr_mots -1))
 	{
-		
-		fin = (occurence_start(s, c, fin));
-		if(s[start] == c)
-		{
-			safe[count] =(char*) malloc(sizeof (char*) * fin-start+1);
-			mots = malloc(sizeof (char) * fin - start +1);
-			mots = ft_substr(s,(unsigned int)start+1,(size_t) (fin-start-1));
-			safe[count] = mots;
-			start = fin;
-		}
-		else
-		{
-			safe[count] = (char*)malloc(sizeof (char*) * fin-start+1);
-			mots = malloc(sizeof (char) * fin - start +1);
-			mots = ft_substr(s,(unsigned int)start,(size_t) (fin-start));
-			safe[count] = mots;
-			start = fin;
-		}
+		fin = occurence_start(s, c ,start);
+		nbr_sur=count_diff(s, c, start,fin);
+		safe[count] = malloc(sizeof(char) * nbr_sur+1);
+		safe[count] = ft_safe(safe[count], s ,c ,start, fin);
+		start = fin;
 		count++;
+		
 	}
 	return(safe);	
 }
-int main ()
-{
-	char *bob="bBbBJE suis B b B ";
-	char **safe;
-	int fin ;
-	safe = ft_split(bob, 98);
-	int count = 0;
-	int counter = 0;
-	fin = 0;
-	printf("%d", nbr_occurence(bob, 98));
-	printf("\n Je suis la pre;iere %c \n", safe[0][0]); 
-	while(count <2);
-	{
-		fin = (occurence_start(bob, 98, fin));
-		counter = 0;
-		while(counter < ft_strlen(safe[count]))
-			printf("_%c_", safe[count][counter++]);
-		count++;
-	}
-}
+

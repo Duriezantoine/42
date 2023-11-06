@@ -6,7 +6,7 @@
 /*   By: aduriez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:15:10 by aduriez           #+#    #+#             */
-/*   Updated: 2023/11/05 11:12:06 by aduriez          ###   ########.fr       */
+/*   Updated: 2023/11/06 10:46:05 by aduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+char 			*ft_itoa(int n);
 char 			**ft_split(char const *s, char c);
 char			*ft_strtrim(char const *s1, char const *set);
 char 			*ft_strjoin(char const *s1, char const *s2);
